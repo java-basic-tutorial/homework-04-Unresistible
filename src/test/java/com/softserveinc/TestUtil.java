@@ -41,17 +41,17 @@ public class TestUtil {
     }
 
     public static void isPublicNoStaticNoFinalNoAbstractClass(Class<?> clazz, String className) {
-        assertNotNull(clazz, "Класс " + className + " не найден");
-        assertTrue(Modifier.isPublic(clazz.getModifiers()), "Класс должен быть публичным");
-        assertFalse(Modifier.isFinal(clazz.getModifiers()), "Класс не должен быть final");
-        assertFalse(Modifier.isAbstract(clazz.getModifiers()), "Класс не должен быть абстрактным");
-        assertFalse(Modifier.isInterface(clazz.getModifiers()), "Должен быть класс, а не интерфейс");
+        assertNotNull(clazz, "Клаcc " + className + " не найден");
+        assertTrue(Modifier.isPublic(clazz.getModifiers()), "Клаcc должен быть публичным");
+        assertFalse(Modifier.isFinal(clazz.getModifiers()), "Клаcc не должен быть final");
+        assertFalse(Modifier.isAbstract(clazz.getModifiers()), "Клаcc не должен быть абcтрактным");
+        assertFalse(Modifier.isInterface(clazz.getModifiers()), "Должен быть клаcc, а не интерфейc");
     }
 
     public static void hasPrivateNoStaticField(Class<?> clazz, String fieldName) throws NoSuchFieldException {
         Field declaredField = clazz.getDeclaredField(fieldName);
         assertTrue(Modifier.isPrivate(declaredField.getModifiers()), "Поле должно быть приватными");
-        assertFalse(Modifier.isStatic(declaredField.getModifiers()), "Поле не должно быть статическими");
+        assertFalse(Modifier.isStatic(declaredField.getModifiers()), "Поле не должно быть cтатичеcкими");
         assertFalse(Modifier.isFinal(declaredField.getModifiers()), "Поле не должно быть final");
     }
 
@@ -64,7 +64,7 @@ public class TestUtil {
     public static void hasFinalPrivateNoStaticField(Class<?> clazz, String fieldName, Class<?> fieldType) throws NoSuchFieldException {
         Field declaredField = clazz.getDeclaredField(fieldName);
         assertTrue(Modifier.isPrivate(declaredField.getModifiers()), "Поле должно быть protected");
-        assertFalse(Modifier.isStatic(declaredField.getModifiers()), "Поле не должно быть статическими");
+        assertFalse(Modifier.isStatic(declaredField.getModifiers()), "Поле не должно быть cтатичеcкими");
         assertTrue(Modifier.isFinal(declaredField.getModifiers()), "Поле должно быть final");
         assertEquals(fieldType, declaredField.getType(), "Поле должно быть типа " + declaredField);
     }
@@ -72,7 +72,7 @@ public class TestUtil {
     public static void hasFinalProtectedNoStaticField(Class<?> clazz, String fieldName, Class<?> fieldType) throws NoSuchFieldException {
         Field declaredField = clazz.getDeclaredField(fieldName);
         assertTrue(Modifier.isProtected(declaredField.getModifiers()), "Поле должно быть protected");
-        assertFalse(Modifier.isStatic(declaredField.getModifiers()), "Поле не должно быть статическими");
+        assertFalse(Modifier.isStatic(declaredField.getModifiers()), "Поле не должно быть cтатичеcкими");
         assertTrue(Modifier.isFinal(declaredField.getModifiers()), "Поле должно быть final");
         assertEquals(fieldType, declaredField.getType(), "Поле должно быть типа " + declaredField);
     }
@@ -80,9 +80,9 @@ public class TestUtil {
     public static void hasPublicNoStaticMethod(Class<?> clazz, String methodName, Class<?>... parameterTypes) throws NoSuchMethodException {
         Method declaredMethod = clazz.getDeclaredMethod(methodName, parameterTypes);
         assertTrue(Modifier.isPublic(declaredMethod.getModifiers()), "Метод должен быть публичными");
-        assertFalse(Modifier.isStatic(declaredMethod.getModifiers()), "Метод не должен быть статическими");
+        assertFalse(Modifier.isStatic(declaredMethod.getModifiers()), "Метод не должен быть cтатичеcкими");
         assertFalse(Modifier.isFinal(declaredMethod.getModifiers()), "Метод не должен быть final");
-        assertFalse(Modifier.isAbstract(declaredMethod.getModifiers()), "Метод не должен быть абстрактным");
+        assertFalse(Modifier.isAbstract(declaredMethod.getModifiers()), "Метод не должен быть абcтрактным");
     }
 
     public static void hasPublicNoStaticMethod(Class<?> clazz, Class<?> returnType, String methodName, Class<?>... parameterTypes) throws NoSuchMethodException {
