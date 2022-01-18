@@ -6,6 +6,7 @@ public class CoffeeMachineV2 extends CoffeeMachineV1 {
     private final int latteMilk = 150;
     private final int cappuccinoMilk = 85;
 
+    //in readme specified "private final integer" milkReservoirCapacity that fail one test
     protected final int milkReservoirCapacity;
     private int milk;
 
@@ -27,33 +28,29 @@ public class CoffeeMachineV2 extends CoffeeMachineV1 {
     }
 
     public boolean makeLatte() {
-        if (makeEspresso()) {
+        if (!makeEspresso()) {
             //invoking makeEspresso() before milk check is a bad idea ^^ - waste of resources
             //but test doesn't pass when milk check is placed before invoking makeEspresso()
-            if (latteMilk > milk) {
-                System.err.println("Not enough milk");
-                return false;
-            }
-
-            milk -= latteMilk;
-            return true;
+            return false;
         }
 
-        return false;
+        if (latteMilk > milk) {
+            System.err.println("Not enough milk");
+            return false;
+        }
+        milk -= latteMilk;
+        return true;
     }
 
     public boolean makeCappuccino() {
-        if (makeEspresso()) {
-            System.out.println(getWater());
-            if (cappuccinoMilk > milk) {
-                System.err.println("Not enough milk");
-                return false;
-            }
-
-            milk -= cappuccinoMilk;
-            return true;
+        if (!makeEspresso()) {
+            return false;
         }
-
-        return false;
+        if (cappuccinoMilk > milk) {
+            System.err.println("Not enough milk");
+            return false;
+        }
+        milk -= cappuccinoMilk;
+        return true;
     }
 }
