@@ -27,10 +27,8 @@ public class UserManager {
 
     public boolean exists(String login, String password) {
         for (User user: users) {
-            if (user.getLogin().equals(login)) {
-                if (user.getPassword().equals(password)) {
+            if ((user.getLogin().equals(login)) && (user.getPassword().equals(password))) {
                     return true;
-                }
             }
         }
         return false;
@@ -38,11 +36,9 @@ public class UserManager {
 
     public boolean changePassword(String login, String oldPassword, String newPassword) {
         for (User user: users) {
-            if (user.getLogin().equals(login)) {
-                if (user.getPassword().equals(oldPassword)) {
-                    user.setPassword(newPassword);
-                    return true;
-                }
+            if ((user.getLogin().equals(login)) && (user.getPassword().equals(oldPassword))) {
+                user.setPassword(newPassword);
+                return true;
             }
         }
         return false;
